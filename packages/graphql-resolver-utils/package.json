@@ -19,6 +19,7 @@
     "lodash": "4.17.4"
   },
   "dependencies": {
+    "@workpop/graphql-metrics": "^0.0.5",
     "@workpop/simple-logger": "^1.0.0"
   }
 }
