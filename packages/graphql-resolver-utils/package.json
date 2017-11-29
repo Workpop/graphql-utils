@@ -1,7 +1,7 @@
 {
-  "name": "@workpop/graphql-metrics",
-  "version": "0.0.5",
-  "description": "Collection of GraphQL Metric Utils",
+  "name": "@workpop/graphql-resolver-utils",
+  "version": "0.0.0",
+  "description": "Collection of GraphQL Resolver utilities",
   "main": "lib/index.js",
   "directories": {
     "test": "__tests__"
@@ -15,11 +15,10 @@
   },
   "author": "Workpop",
   "license": "MIT",
-  "dependencies": {
-    "@workpop/simple-logger": "^1.0.0",
-    "influx": "^5.0.7"
-  },
   "peerDependencies": {
     "lodash": "4.17.4"
+  },
+  "dependencies": {
+    "@workpop/simple-logger": "^1.0.0"
   }
 }
