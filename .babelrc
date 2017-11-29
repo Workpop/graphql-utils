@@ -1,14 +1,20 @@
 {
-  "presets": [
-    "stage-0",
-    "env"
-  ],
+  "presets": ["stage-0", "env"],
   "plugins": [
     "transform-class-properties",
     "transform-flow-strip-types",
     "transform-object-assign",
     "transform-object-rest-spread",
     "transform-export-extensions",
-    "lodash"
+    "lodash",
+    "transform-async-to-generator",
+    "transform-async-generator-functions",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
   ]
 }

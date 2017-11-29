@@ -7,7 +7,7 @@ import {
 
 const logger = {
   log: (...args) => {
-    return console.log(args);
+    return console.log(args); //eslint-disable-line no-console
   },
 };
 
@@ -20,7 +20,6 @@ const Metrics = new WPGraphQLMetrics({
 
 describe('Instrumentation', function () {
   it('should call the Log Function', function () {
-    expect(1).to.eql(1);
     const consoleStub = sinon.stub(logger, 'log');
     const stubResolvers = instrumentResolvers(
       {
