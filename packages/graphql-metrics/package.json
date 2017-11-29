@@ -1,0 +1,28 @@
+{
+  "name": "@workpop/graphql-metrics",
+  "version": "0.0.5",
+  "description": "Collection of GraphQL utilities",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "__tests__"
+  },
+  "scripts": {
+    "testonly": "mocha __tests__/index.js --compilers js:babel-register",
+    "test": "npm run lint && npm run testonly",
+    "test:watch": "npm run testonly -- --watch --watch-extensions js",
+    "release": "standard-version",
+    "lint": "eslint .",
+    "flow": "flow check",
+    "fix": "eslint . --fix",
+    "prepublish": "babel ./src --ignore __tests__ --out-dir ./lib"
+  },
+  "author": "Workpop",
+  "license": "MIT",
+  "dependencies": {
+    "@workpop/simple-logger": "^1.0.0",
+    "influx": "^5.0.7"
+  },
+  "peerDependencies": {
+    "lodash": "4.17.4"
+  }
+}
