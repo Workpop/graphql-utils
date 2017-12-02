@@ -1,0 +1,1 @@
+export registerServices from './registration';

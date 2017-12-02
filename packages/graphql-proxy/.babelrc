@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "env",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-object-assign",
+    "transform-object-rest-spread",
+    "transform-export-extensions",
+    "transform-async-to-generator",
+    "transform-async-generator-functions",
+    ["transform-runtime", {
+      "polyfill": false,
+      "regenerator": true
+    }]
+  ]
+}
