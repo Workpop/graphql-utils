@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-proxy",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "main": "lib/index.js",
   "dependencies": {
     "@workpop/eventbus-client": "^0.0.6",

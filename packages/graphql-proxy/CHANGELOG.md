@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.0"></a>
+# 1.7.0 (2017-12-08)
+
+
+### Features
+
+* **graphql:** proxy move to utils, upgrade to latest graphqltools ([8f9b9c0](https://github.com/Workpop/graphql-utils/commit/8f9b9c0))
+
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/Workpop/roxy/compare/@workpop/graphql-proxy@1.4.3...@workpop/graphql-proxy@1.6.0) (2017-10-19)
 
