@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.7.1"></a>
+## [1.7.1](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.7.0...@workpop/graphql-proxy@1.7.1) (2017-12-11)
+
+
+### Bug Fixes
+
+* **libs:** lib deps ([cc7a763](https://github.com/Workpop/graphql-utils/commit/cc7a763))
+
+
+
+
 <a name="1.7.0"></a>
 # 1.7.0 (2017-12-08)
 
