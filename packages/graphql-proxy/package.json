@@ -3,12 +3,9 @@
   "version": "1.7.0",
   "main": "lib/index.js",
   "dependencies": {
-    "@workpop/eventbus-client": "^0.0.6",
     "@workpop/simple-logger": "^1.0.0",
-    "apollo-fetch": "^0.6.0",
-    "apollo-link": "^0.5.4",
+    "apollo-fetch": "^0.7.0",
     "body-parser": "^1.17.2",
-    "consul": "^0.29.0",
     "express": "^4.15.3",
     "graphql": "^0.11.7",
     "graphql-request": "^1.2.0",
