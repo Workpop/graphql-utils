@@ -72,10 +72,11 @@ async function createSchemas({ SERVICE_CONFIG, customHeaders }) {
       const uri = head(keys(currentVal));
       const fetcher = createApolloFetch({ uri });
       fetcher.use(({ request, options = {} }, next) => {
+        const headersFromReq = get(request, 'context.graphqlContext.headers', {});
         if (!options.headers) {
           options.headers = {};
         }
-        options.headers = customHeaders;
+        options.headers = headersFromReq;
 
         next();
       });
