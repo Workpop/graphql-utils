@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-proxy",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "main": "lib/index.js",
   "dependencies": {
     "@workpop/simple-logger": "^1.0.0",
