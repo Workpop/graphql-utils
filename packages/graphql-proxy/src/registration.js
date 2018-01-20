@@ -4,8 +4,9 @@ import {
   mergeSchemas,
   makeRemoteExecutableSchema,
 } from 'graphql-tools';
+import { parse } from 'graphql';
 import { createApolloFetch } from 'apollo-fetch';
-import { get, reduce, pick, keys, values, last, head } from 'lodash';
+import { get, reduce, pick, keys, values, each, last, head } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import logger from './logger';
 import { compareSemVer } from './utilities';
@@ -72,7 +73,11 @@ async function createSchemas({ SERVICE_CONFIG, customHeaders }) {
       const uri = head(keys(currentVal));
       const fetcher = createApolloFetch({ uri });
       fetcher.use(({ request, options = {} }, next) => {
-        const headersFromReq = get(request, 'context.graphqlContext.headers', {});
+        const headersFromReq = get(
+          request,
+          'context.graphqlContext.headers',
+          {}
+        );
         if (!options.headers) {
           options.headers = {};
         }
@@ -97,6 +102,22 @@ async function createSchemas({ SERVICE_CONFIG, customHeaders }) {
     },
     {}
   );
+}
+
+function logSelectionSet(query) {
+  const parsedQuery = parse(query);
+
+  each(get(parsedQuery, 'definitions'), (definition) => {
+    const selectionSet = get(definition, 'selectionSet');
+
+    const selections = get(selectionSet, 'selections');
+
+    each(selections, (selection) => {
+      const value = get(selection, 'name.value');
+
+      logger.info('Resolver name from selection set:', value);
+    });
+  });
 }
 
 export default async function registerServices({
@@ -175,6 +196,21 @@ export default async function registerServices({
               };
             },
         };
+
+        const queryString = req.body.query;
+        const operationName = req.body.operationName;
+        const variables = req.body.variables;
+
+        if (!!queryString) {
+          logSelectionSet(queryString);
+        }
+
+        if (!!operationName) {
+          logger.info('GraphQL Operation Name:', operationName);
+        }
+        if (!!variables) {
+          logger.info('GraphQL Variables:', variables);
+        }
 
         const userId = req.headers.userid || req.headers['wp-userid'];
         const cookie = req.headers.cookie;
