@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.7.2...@workpop/graphql-proxy@1.8.0) (2018-01-20)
+
+
+### Features
+
+* **log:** log selection set resolver name, variables, operation name ([bb5d1f5](https://github.com/Workpop/graphql-utils/commit/bb5d1f5))
+
+
+
+
 <a name="1.7.2"></a>
 ## [1.7.2](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.7.1...@workpop/graphql-proxy@1.7.2) (2017-12-11)
 
