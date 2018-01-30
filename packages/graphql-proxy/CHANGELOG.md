@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.8.3"></a>
+## [1.8.3](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.8.2...@workpop/graphql-proxy@1.8.3) (2018-01-30)
+
+
+
+
+**Note:** Version bump only for package @workpop/graphql-proxy
+
 <a name="1.8.2"></a>
 ## [1.8.2](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.8.1...@workpop/graphql-proxy@1.8.2) (2018-01-30)
 
