@@ -1,6 +1,20 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="0.3.0"></a>
+# 0.3.0 (2018-01-30)
+
+
+### Features
+
+* **metrics:** sanitize args before logging ([7d880ea](https://github.com/Workpop/graphql-utils/commit/7d880ea))
+* **secureResolvers:** secure resolvers ([24fb328](https://github.com/Workpop/graphql-utils/commit/24fb328))
+* **utils:** add sanitize args util ([e4b4465](https://github.com/Workpop/graphql-utils/commit/e4b4465))
+
+
+
 
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/Workpop/graphql-utils/compare/v0.0.6...v0.2.0) (2018-01-30)
