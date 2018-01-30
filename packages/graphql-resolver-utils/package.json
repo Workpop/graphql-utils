@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-resolver-utils",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Collection of GraphQL Resolver utilities",
   "main": "lib/index.js",
   "directories": {

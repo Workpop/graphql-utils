@@ -1,6 +1,18 @@
 # Change Log
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-resolver-utils@0.1.1...@workpop/graphql-resolver-utils@0.3.0) (2018-01-30)
+
+
+### Features
+
+* **utils:** add sanitize args util ([e4b4465](https://github.com/Workpop/graphql-utils/commit/e4b4465))
+
+
+
 
 <a name="0.2.0"></a>
 # 0.2.0 (2018-01-30)
