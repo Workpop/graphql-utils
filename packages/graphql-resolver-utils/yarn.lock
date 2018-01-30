@@ -11,9 +11,31 @@
     influx "^5.0.7"
     lodash "^4.17.4"
 
+"@workpop/graphql-metrics@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.0.tgz#014409ec895aedf84b1e459b28281f083dfd73df"
+  dependencies:
+    "@workpop/graphql-resolver-utils" "^0.2.0"
+    "@workpop/simple-logger" "^1.0.0"
+    influx "^5.0.7"
+
+"@workpop/graphql-resolver-utils@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-resolver-utils/-/graphql-resolver-utils-0.2.0.tgz#9d650f5aa99b62f3e2aa9bbc00d42fd55b45534f"
+  dependencies:
+    "@workpop/graphql-metrics" "^0.0.5"
+    "@workpop/simple-logger" "^1.0.0"
+
 "@workpop/simple-logger@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.0.0.tgz#9ffd9ec15288b0ed015ae33e3b95b6da255482a2"
+  dependencies:
+    lodash "^4.17.4"
+    moment "^2.18.1"
+
+"@workpop/simple-logger@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.1.0.tgz#712289773e6d75e445f2a4ec36dab906c9fcf10c"
   dependencies:
     lodash "^4.17.4"
     moment "^2.18.1"
