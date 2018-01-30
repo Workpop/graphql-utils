@@ -1,4 +1,4 @@
-import { instrumentResolvers } from '@workpop/graphql-metrics';
+import instrumentResolvers from '@workpop/graphql-metrics/lib/instrumentation';
 import Logger from '@workpop/simple-logger';
 import { get } from 'lodash';
 import secureResolvers from './secureResolvers';
