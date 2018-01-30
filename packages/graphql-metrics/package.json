@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-metrics",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Collection of GraphQL Metric Utils",
   "main": "lib/index.js",
   "directories": {
@@ -20,8 +20,8 @@
     "@workpop/simple-logger": "^1.0.0"
   },
   "peerDependencies": {
-    "lodash": "4.17.4",
-    "influx": "^5.0.7"
+    "influx": "^5.0.7",
+    "lodash": "4.17.4"
   },
   "devDependencies": {
     "flow-bin": "^0.64.0"
