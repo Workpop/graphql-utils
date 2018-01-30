@@ -45,8 +45,5 @@
     "flow"
   ],
   "author": "Workpop",
-  "license": "MIT",
-  "dependencies": {
-    "flow-typed": "^2.3.0"
-  }
+  "license": "MIT"
 }
