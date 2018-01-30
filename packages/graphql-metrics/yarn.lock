@@ -13,7 +13,7 @@ influx@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/influx/-/influx-5.0.7.tgz#35e65f6bf13cbaa1763108b5596a806a727a529a"
 
-lodash@4.17.4, lodash@^4.17.4:
+lodash@^4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
