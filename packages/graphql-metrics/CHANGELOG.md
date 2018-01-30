@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/Workpop/graphql-utils/compare/v0.2.0...v0.0.6) (2018-01-30)
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/Workpop/graphql-metrics/compare/v0.0.4...v0.0.5) (2017-08-31)
 
