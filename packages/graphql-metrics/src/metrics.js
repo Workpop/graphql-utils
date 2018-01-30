@@ -1,6 +1,6 @@
 import Logger from '@workpop/simple-logger';
 import { floor, forIn, get, isEmpty, reduce, toLower, unset } from 'lodash';
-import Influx from 'influx';
+import { InfluxDB } from 'influx';
 
 const logger = new Logger('GRAPHQL-METRICS');
 
@@ -55,7 +55,7 @@ export default class WPGraphQLMetrics {
     this.enableGraphQLMetrics = enableGraphQLMetrics;
 
     if (isInfluxConfigured(influxSettings)) {
-      this.influx = new Influx.InfluxDB(influxSettings);
+      this.influx = new InfluxDB(influxSettings);
     } else {
       logger.warn(
         'Influx not properly configured - will not be sending metrics to Influx'
