@@ -2,12 +2,43 @@
 # yarn lockfile v1
 
 
+"@workpop/graphql-metrics@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.0.5.tgz#71d4b549b56350a2909c1c94f0b4adea13c180b9"
+  dependencies:
+    "@workpop/simple-logger" "^1.0.0"
+    babel-runtime "6.x.x"
+    influx "^5.0.7"
+    lodash "^4.17.4"
+
+"@workpop/graphql-resolver-utils@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-resolver-utils/-/graphql-resolver-utils-0.2.0.tgz#9d650f5aa99b62f3e2aa9bbc00d42fd55b45534f"
+  dependencies:
+    "@workpop/graphql-metrics" "^0.0.5"
+    "@workpop/simple-logger" "^1.0.0"
+
 "@workpop/simple-logger@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.0.0.tgz#9ffd9ec15288b0ed015ae33e3b95b6da255482a2"
   dependencies:
     lodash "^4.17.4"
     moment "^2.18.1"
+
+babel-runtime@6.x.x:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
+
+core-js@^2.4.0:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.3.tgz#8acc38345824f16d8365b7c9b4259168e8ed603e"
+
+flow-bin@^0.64.0:
+  version "0.64.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.64.0.tgz#ddd3fb3b183ab1ab35a5d5dec9caf5ebbcded167"
 
 influx@^5.0.7:
   version "5.0.7"
@@ -20,3 +51,7 @@ lodash@^4.17.4:
 moment@^2.18.1:
   version "2.19.3"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
