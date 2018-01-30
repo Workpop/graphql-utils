@@ -16,10 +16,14 @@
   "author": "Workpop",
   "license": "MIT",
   "dependencies": {
+    "@workpop/graphql-resolver-utils": "^0.2.0",
     "@workpop/simple-logger": "^1.0.0",
     "influx": "^5.0.7"
   },
   "peerDependencies": {
     "lodash": "4.17.4"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.64.0"
   }
 }
