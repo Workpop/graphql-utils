@@ -8,8 +8,10 @@ import { parse } from 'graphql';
 import { createApolloFetch } from 'apollo-fetch';
 import { get, reduce, pick, keys, values, each, last, head } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
-import logger from './logger';
+import Logger from '@workpop/simple-logger';
 import { compareSemVer } from './utilities';
+
+const ProxyLogger = new Logger('GRAPHQLPROXY');
 
 function parseVersion(version) {
   return last(version.split(':'));
@@ -115,7 +117,7 @@ function logSelectionSet(query) {
     each(selections, (selection) => {
       const value = get(selection, 'name.value');
 
-      logger.info('Resolver name from selection set:', value);
+      ProxyLogger.info('Resolver name from selection set:', value);
     });
   });
 }
@@ -145,7 +147,7 @@ export default async function registerServices({
         );
 
         if (leftTypeVersion && rightTypeVersion) {
-          logger.info(
+          ProxyLogger.info(
             'Versions found comparing',
             leftTypeVersion,
             rightTypeVersion
@@ -165,16 +167,16 @@ export default async function registerServices({
         }
 
         if (!!leftTypeVersion && !rightTypeVersion) {
-          logger.info('Only leftTypeVersion found', leftTypeVersion);
+          ProxyLogger.info('Only leftTypeVersion found', leftTypeVersion);
           return leftType;
         }
 
         if (!leftTypeVersion && !!rightTypeVersion) {
-          logger.info('Only rightTypeVersion found', rightTypeVersion);
+          ProxyLogger.info('Only rightTypeVersion found', rightTypeVersion);
           return rightType;
         }
 
-        logger.info('No versions found picking leftType');
+        ProxyLogger.info('No versions found picking leftType');
         return leftType;
       },
     });
@@ -183,6 +185,16 @@ export default async function registerServices({
       '/graphql',
       bodyParser.json(),
       graphqlExpress(async (req) => {
+        let logger;
+
+        const requestId = req.headers.requestId;
+
+        if (requestId) {
+          logger = new Logger('GRAPHQLPROXY', requestId);
+        } else {
+          logger = new Logger('GRAPHQLPROXY');
+        }
+
         const options = {
           context: {
             config: SERVICE_CONFIG,
@@ -196,6 +208,10 @@ export default async function registerServices({
               };
             },
         };
+
+        if (requestId) {
+          options.context.requestId = requestId;
+        }
 
         const queryString = req.body.query;
         const operationName = req.body.operationName;
@@ -246,6 +262,6 @@ export default async function registerServices({
       );
     }
   } catch (e) {
-    return logger.error(e);
+    return ProxyLogger.error(e);
   }
 }
