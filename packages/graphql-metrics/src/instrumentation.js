@@ -1,5 +1,6 @@
 //@flow
 import { get, isFinite, mapValues, reduce } from 'lodash';
+import { sanitizeArgs } from '@workpop/graphql-resolver-utils';
 
 const crypto = require('crypto');
 
@@ -42,10 +43,11 @@ function _createInstrumentedResolver(
   return (root: Object, resolverArgs: Object, context: Object): ?any => {
     const startTime = process.hrtime();
     const callId = crypto.randomBytes(16).toString('hex'); // used to correlate the start event and the completed event
+    const sanitizedArgs = sanitizeArgs(resolverArgs);
     const baseLogEvent = {
       callId,
       resolverName,
-      resolverArgs,
+      resolverArgs: sanitizedArgs,
       context,
     };
 
