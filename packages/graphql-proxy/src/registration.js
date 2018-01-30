@@ -210,6 +210,7 @@ export default async function registerServices({
         };
 
         if (requestId) {
+          logger.info('Request Id:', requestId);
           options.context.requestId = requestId;
         }
 
@@ -243,6 +244,7 @@ export default async function registerServices({
           ...forwardHeaders,
           ...customHeaders,
           userId,
+          requestId,
           'wp-userid': userId,
           cookie,
         };
