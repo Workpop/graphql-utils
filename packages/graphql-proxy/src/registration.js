@@ -187,7 +187,7 @@ export default async function registerServices({
       graphqlExpress(async (req) => {
         let logger;
 
-        const requestId = req.headers.requestId;
+        const requestId = req.headers['x-request-id'];
 
         if (requestId) {
           logger = new Logger('GRAPHQLPROXY', requestId);
