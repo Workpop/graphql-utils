@@ -1,6 +1,6 @@
 //@flow
 import { get, isFinite, mapValues, reduce } from 'lodash';
-import { sanitizeArgs } from '@workpop/graphql-resolver-utils';
+import { sanitizeArgs } from './sanitizeArgs';
 
 const crypto = require('crypto');
 
