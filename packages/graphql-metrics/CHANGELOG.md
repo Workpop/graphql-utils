@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.10"></a>
+## [0.3.10](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.9...@workpop/graphql-metrics@0.3.10) (2018-02-26)
+
+
+### Bug Fixes
+
+* **info:** pass info ([457a160](https://github.com/Workpop/graphql-utils/commit/457a160))
+
+
+
+
 <a name="0.3.9"></a>
 ## [0.3.9](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.8...@workpop/graphql-metrics@0.3.9) (2018-02-26)
 
