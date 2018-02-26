@@ -16,12 +16,12 @@ function _createSecuredResolver({
     logger.info(`${resolverName} secured`);
   }
 
-  return async (root, resolverArgs, context) => {
+  return async (root, resolverArgs, context, info) => {
     logger.trace(`checking permissions for ${resolverName}`);
     if (permissionCheckFunc) {
       // following will throw with appropriate error
       try {
-        await permissionCheckFunc.call(null, resolverArgs, context);
+        await permissionCheckFunc.call(null, resolverArgs, context, info);
       } catch (e) {
         // log and rethrow
         logger.error(e);
@@ -30,7 +30,7 @@ function _createSecuredResolver({
     } else {
       logger.warn(`${resolverName} is called unsecured`);
     }
-    return resolverImpl.call(null, root, resolverArgs, context);
+    return resolverImpl.call(null, root, resolverArgs, context, info);
   };
 }
 
