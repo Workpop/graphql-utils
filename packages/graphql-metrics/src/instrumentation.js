@@ -40,7 +40,7 @@ function _createInstrumentedResolver(
   metrics: Object
 ): Function {
   metrics.addResolverMetric(resolverName);
-  return (root: Object, resolverArgs: Object, context: Object): ?any => {
+  return (root: Object, resolverArgs: Object, context: Object, info: Object): ?any => {
     const startTime = process.hrtime();
 
     const requestId = get(context, 'requestId');
@@ -62,7 +62,7 @@ function _createInstrumentedResolver(
     logFunc(logLevels.INFO, baseLogEvent);
 
     try {
-      const retval = resolverImpl.call(null, root, resolverArgs, context);
+      const retval = resolverImpl.call(null, root, resolverArgs, context, info);
       if (retval instanceof Promise) {
         return retval
           .then((promiseVal: ?any): Promise<*> => {
