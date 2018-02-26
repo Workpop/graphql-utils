@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-resolver-utils",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "Collection of GraphQL Resolver utilities",
   "main": "lib/index.js",
   "directories": {
@@ -16,8 +16,8 @@
   "author": "Workpop",
   "license": "MIT",
   "peerDependencies": {
-    "lodash": "4.17.4",
     "@workpop/graphql-metrics": "^0.3.10",
-    "@workpop/simple-logger": "^1.2.0"
+    "@workpop/simple-logger": "^1.2.0",
+    "lodash": "4.17.4"
   }
 }
