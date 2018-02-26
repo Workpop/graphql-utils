@@ -2,15 +2,22 @@
 # yarn lockfile v1
 
 
-"@workpop/graphql-metrics@^0.3.6":
-  version "0.3.6"
-  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.6.tgz#9f2fdecb6ed924acf26227f6ad7a9ba6a24ab419"
+"@workpop/graphql-metrics@^0.3.10":
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.10.tgz#55fa65012d7c40c32ac30ea1f70e3988fe0e1e29"
   dependencies:
     "@workpop/simple-logger" "^1.1.0"
 
 "@workpop/simple-logger@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.1.0.tgz#712289773e6d75e445f2a4ec36dab906c9fcf10c"
+  dependencies:
+    lodash "^4.17.4"
+    moment "^2.18.1"
+
+"@workpop/simple-logger@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.2.0.tgz#b677cb20fab82f13dcdd5e3c9fc7f63d1dc8ac10"
   dependencies:
     lodash "^4.17.4"
     moment "^2.18.1"
