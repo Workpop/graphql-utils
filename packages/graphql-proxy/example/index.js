@@ -1,5 +1,5 @@
 import express from 'express';
-import { registerServices } from '../src';
+import registerServices from '../src';
 import SERVICE_CONFIG from './config';
 
 const app = express();
