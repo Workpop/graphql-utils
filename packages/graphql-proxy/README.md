@@ -95,3 +95,7 @@ type RegisterServiceType = {
   errorFormatter: Function // Custom error formatter passed to the GraphQL express middleware
 }
 ```
+
+## Resolver Forwarding
+
+The mechanism by which Roxy takes incoming requests and forwards them to the GraphQL service it belongs to is via `GraphQL Bindings`.
