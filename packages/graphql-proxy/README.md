@@ -99,3 +99,31 @@ type RegisterServiceType = {
 ## Resolver Forwarding
 
 The mechanism by which Roxy takes incoming requests and forwards them to the GraphQL service it belongs to is via `GraphQL Bindings`.
+
+GraphQL bindings are modular building blocks that allow you to embed existing GraphQL APIs into a GraphQL server. This makes it extremely easy to access data from various GraphQL sources and integrate these in a single GraphQL API.
+
+Roxy uses `graphql-binding` to create these modular building blocks for each service in the `SERVICE_CONFIG`.
+
+### ServiceBinding
+
+We extend the `Binding` class from `graphql-binding` to create our Schema and expose 2 methods:
+`getQueryFields`, `getMutationFields`. We use these to generate our resolver map.
+
+### ServiceTransport
+
+We extend the `HttpLink` class from `apollo-http-link` to configure our remote endpoints called via `fetch` when a binding method is called.
+
+## Example
+
+To run the example repo make sure to yarn in the root of this project once cloned.
+
+To start the test services, run:
+
+`$ npm run test-services`
+
+This will run the `swapi`, `pokemon`, and `anotherOne` services via `concurrently`.
+
+Next open a new terminal window and run:
+`$ npm run roxy`
+
+You can navigate to `http://localhost:3020/graphiql` to play around with the example services.
