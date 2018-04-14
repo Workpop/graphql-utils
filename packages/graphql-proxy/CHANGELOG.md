@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.9.0...@workpop/graphql-proxy@2.0.1) (2018-04-14)
+
+
+
+
+**Note:** Version bump only for package @workpop/graphql-proxy
+
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.8.3...@workpop/graphql-proxy@1.9.0) (2018-04-14)
+
+
+### Features
+
+* **Roxy:** Roxy V2 ([323e7c3](https://github.com/Workpop/graphql-utils/commit/323e7c3))
+* **Roxy:** Roxy V2 ([f5ac85e](https://github.com/Workpop/graphql-utils/commit/f5ac85e))
+* **Roxy:** Roxy V2 ([65a2b2e](https://github.com/Workpop/graphql-utils/commit/65a2b2e))
+* **Roxy:** Roxy V2 ([5bb98b7](https://github.com/Workpop/graphql-utils/commit/5bb98b7))
+
+
+
+
 <a name="1.8.3"></a>
 ## [1.8.3](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.8.2...@workpop/graphql-proxy@1.8.3) (2018-01-30)
 
