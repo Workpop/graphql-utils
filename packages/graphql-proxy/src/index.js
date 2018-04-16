@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import { makeExecutableSchema } from 'graphql-tools';
-import { pick } from 'lodash';
+import { pick, omit, get } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
@@ -33,11 +33,19 @@ export default async function registerServices({
     customHeaders,
   });
 
-  const instrumentedResolvers = instrumentResolvers(
+  const instrumentedResolvers = instrumentResolvers({
     resolvers,
     _logFunction,
-    logLevels
-  );
+    logLevels,
+    logOptions: {
+      filterContext: (context = {}) => {
+        return {
+          ...context,
+          headers: omit(get(context, 'headers'), 'cookie'),
+        };
+      },
+    },
+  });
 
   const schema = makeExecutableSchema({
     typeDefs: masterTypeDefs,

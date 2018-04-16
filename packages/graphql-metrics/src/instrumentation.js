@@ -32,14 +32,23 @@ function _statusCodeForError(err: Error): number {
   return 500;
 }
 
-function _createInstrumentedResolver(
+type ImplementationType = {
   resolverName: string,
   resolverImpl: Function,
   logFunc: Function,
   logLevels: Object,
   metrics: Object,
-  logOptions: Object = {},
-): Function {
+  logOptions: Object,
+};
+
+function _createInstrumentedResolver({
+  resolverName,
+  resolverImpl,
+  logFunc,
+  logLevels,
+  metrics,
+  logOptions = {},
+}: ImplementationType): Function {
   if (!!metrics) {
     metrics.addResolverMetric(resolverName);
   }
@@ -170,6 +179,14 @@ function _createInstrumentedResolver(
   };
 }
 
+type InstrumentType = {
+  resolvers: Object,
+  logFunc: Function,
+  logLevels: Object,
+  metrics: Object,
+  logOptions: Object,
+};
+
 /**
  * Instrument GraphQL resolvers object
  *
@@ -177,13 +194,13 @@ function _createInstrumentedResolver(
  * @param logFunc
  * @returns {*}
  */
-export default function instrumentResolvers(
-  resolvers: Object,
-  logFunc: Function,
-  logLevels: Object,
-  metrics: Object,
-  logOptions: Object = {},
-): Object {
+export default function instrumentResolvers({
+  resolvers,
+  logFunc,
+  logLevels,
+  metrics,
+  logOptions = {},
+}: InstrumentType): Object {
   if (!!metrics) {
     metrics.initMetrics();
     metrics.runMetricInterval();
@@ -200,14 +217,14 @@ export default function instrumentResolvers(
         resolverName: string
       ): Object => {
         return Object.assign({}, memo, {
-          [resolverName]: _createInstrumentedResolver(
+          [resolverName]: _createInstrumentedResolver({
             resolverName,
             resolverImpl,
             logFunc,
             logLevels,
             metrics,
-            logOptions
-          ),
+            logOptions,
+          }),
         });
       },
       {}
