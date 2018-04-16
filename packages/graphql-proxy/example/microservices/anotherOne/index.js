@@ -1,9 +1,9 @@
 import express from 'express';
+import { get } from 'lodash';
 import bodyParser from 'body-parser';
 import { graphqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
 import schemaString from './schema';
-
 
 /**
  * This defines a basic set of data for our anotherOne Schema.
@@ -69,12 +69,21 @@ function getHuman(id) {
 
 const resolvers = {
   Query: {
-    anotherOneHero: (root, { region }) => { return getHero(region); },
-    anotherOneCharacter: (root, { id }) => { return getCharacter(id); },
-    anotherOneHuman: (root, { id }) => { return getHuman(id); },
+    anotherOneHero: (root, { region }, context) => {
+      console.log(context);
+      return getHero(region);
+    },
+    anotherOneCharacter: (root, { id }) => {
+      return getCharacter(id);
+    },
+    anotherOneHuman: (root, { id }) => {
+      return getHuman(id);
+    },
   },
   Mutation: {
-    changeHeroName: (root) => { return true; },
+    changeHeroName: (root) => {
+      return true;
+    },
   },
 };
 
@@ -92,9 +101,18 @@ const server = express();
 server.use(
   '/graphql',
   bodyParser.json(),
-  graphqlExpress(async () => {
+  graphqlExpress(async (req) => {
+    const headers = req.headers;
+
+    console.log(req.headers);
+
+    const userId = get(headers, 'userid') || get(headers, 'wp-userid');
+
     const options = {
       schema,
+      context: {
+        userId,
+      },
       formatError: (e) => {
         return {
           name: e.name,
