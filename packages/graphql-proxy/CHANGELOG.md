@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.3"></a>
+## [2.0.3](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.2...@workpop/graphql-proxy@2.0.3) (2018-04-16)
+
+
+### Bug Fixes
+
+* **attach:** attach graphql context ([90942a3](https://github.com/Workpop/graphql-utils/commit/90942a3))
+* **attach:** attach graphql context ([6916063](https://github.com/Workpop/graphql-utils/commit/6916063))
+* **attach:** attach graphql context ([e720140](https://github.com/Workpop/graphql-utils/commit/e720140))
+* **validation:** add validation to error fmt ([7e242fe](https://github.com/Workpop/graphql-utils/commit/7e242fe))
+
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.1...@workpop/graphql-proxy@2.0.2) (2018-04-16)
 
