@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.12"></a>
+## [0.3.12](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-resolver-utils@0.3.9...@workpop/graphql-resolver-utils@0.3.12) (2018-04-16)
+
+
+### Bug Fixes
+
+* **update:** resolver utils update ([54e92a1](https://github.com/Workpop/graphql-utils/commit/54e92a1))
+
+
+
+
 <a name="0.3.11"></a>
 ## [0.3.11](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-resolver-utils@0.3.9...@workpop/graphql-resolver-utils@0.3.11) (2018-04-16)
 
