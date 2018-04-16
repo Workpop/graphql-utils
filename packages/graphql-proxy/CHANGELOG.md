@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.1...@workpop/graphql-proxy@2.0.2) (2018-04-16)
+
+
+### Bug Fixes
+
+* **filterContext:** add log options and filter context function ([36c1ce1](https://github.com/Workpop/graphql-utils/commit/36c1ce1))
+* **instrumentation:** object params ([bc8e899](https://github.com/Workpop/graphql-utils/commit/bc8e899))
+* **proxy:** finalize instrumentation ([3e75b5b](https://github.com/Workpop/graphql-utils/commit/3e75b5b))
+
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@1.9.0...@workpop/graphql-proxy@2.0.1) (2018-04-14)
 
