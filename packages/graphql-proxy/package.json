@@ -6,6 +6,7 @@
     "@workpop/graphql-metrics": "^0.3.12",
     "@workpop/simple-logger": "^1.0.0",
     "apollo-link": "^1.2.1",
+    "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.3",
     "body-parser": "^1.17.2",
     "command-line-args": "^5.0.2",
