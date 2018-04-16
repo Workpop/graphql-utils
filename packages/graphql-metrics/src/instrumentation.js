@@ -39,8 +39,16 @@ function _createInstrumentedResolver(
   logLevels: Object,
   metrics: Object
 ): Function {
-  metrics.addResolverMetric(resolverName);
-  return (root: Object, resolverArgs: Object, context: Object, info: Object): ?any => {
+  if (!!metrics) {
+    metrics.addResolverMetric(resolverName);
+  }
+
+  return (
+    root: Object,
+    resolverArgs: Object,
+    context: Object,
+    info: Object
+  ): ?any => {
     const startTime = process.hrtime();
 
     const requestId = get(context, 'requestId');
@@ -74,11 +82,14 @@ function _createInstrumentedResolver(
                 status: 200,
               })
             );
-            metrics.logMetrics({
-              resolverName,
-              responseTime: elapsedTime,
-              status: 200,
-            });
+
+            if (!!metrics) {
+              metrics.logMetrics({
+                resolverName,
+                responseTime: elapsedTime,
+                status: 200,
+              });
+            }
 
             return Promise.resolve(promiseVal);
           })
@@ -93,11 +104,14 @@ function _createInstrumentedResolver(
                 status,
               })
             );
-            metrics.logMetrics({
-              resolverName,
-              responseTime: elapsedTime,
-              status,
-            });
+
+            if (!!metrics) {
+              metrics.logMetrics({
+                resolverName,
+                responseTime: elapsedTime,
+                status,
+              });
+            }
 
             return Promise.reject(promiseErr);
           });
@@ -112,11 +126,13 @@ function _createInstrumentedResolver(
           status: 200,
         })
       );
-      metrics.logMetrics({
-        resolverName,
-        responseTime: elapsedTime,
-        status: 200,
-      });
+      if (!!metrics) {
+        metrics.logMetrics({
+          resolverName,
+          responseTime: elapsedTime,
+          status: 200,
+        });
+      }
 
       return retval;
     } catch (err) {
@@ -131,12 +147,13 @@ function _createInstrumentedResolver(
           status,
         })
       );
-
-      metrics.logMetrics({
-        resolverName,
-        responseTime: elapsedTime,
-        status,
-      });
+      if (!!metrics) {
+        metrics.logMetrics({
+          resolverName,
+          responseTime: elapsedTime,
+          status,
+        });
+      }
 
       throw err;
     }
@@ -156,8 +173,10 @@ export default function instrumentResolvers(
   logLevels: Object,
   metrics: Object
 ): Object {
-  metrics.initMetrics();
-  metrics.runMetricInterval();
+  if (!!metrics) {
+    metrics.initMetrics();
+    metrics.runMetricInterval();
+  }
 
   // for each resolver type: Mutation, Query
   return mapValues(resolvers, (resolverFunctions: Object): Object => {
