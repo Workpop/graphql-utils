@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-metrics",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "Collection of GraphQL Metric Utils",
   "main": "lib/index.js",
   "directories": {

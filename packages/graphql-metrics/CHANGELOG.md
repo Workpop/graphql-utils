@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.12"></a>
+## [0.3.12](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.11...@workpop/graphql-metrics@0.3.12) (2018-04-16)
+
+
+### Bug Fixes
+
+* **filterContext:** add log options and filter context function ([36c1ce1](https://github.com/Workpop/graphql-utils/commit/36c1ce1))
+* **instrumentation:** object params ([bc8e899](https://github.com/Workpop/graphql-utils/commit/bc8e899))
+
+
+
+
 <a name="0.3.11"></a>
 ## [0.3.11](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.10...@workpop/graphql-metrics@0.3.11) (2018-04-16)
 
