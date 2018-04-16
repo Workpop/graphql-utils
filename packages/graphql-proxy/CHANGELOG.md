@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.4"></a>
+## [2.0.4](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.3...@workpop/graphql-proxy@2.0.4) (2018-04-16)
+
+
+### Bug Fixes
+
+* **userid:** userid header set ([a98c9c5](https://github.com/Workpop/graphql-utils/commit/a98c9c5))
+
+
+
+
 <a name="2.0.3"></a>
 ## [2.0.3](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.2...@workpop/graphql-proxy@2.0.3) (2018-04-16)
 
