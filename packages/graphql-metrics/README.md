@@ -5,11 +5,13 @@ GraphQL-metrics instruments GraphQL resolvers, logging response times and status
 ## Usage
 
 To install:
+
 ```
 yarn add @workpop/graphql-metrics
 ```
 
 ### Configuring the metrics logger
+
 ```javascript
 import { WPGraphQLMetrics } from '@workpop/graphql-metrics';
 
@@ -37,6 +39,7 @@ export const Metrics = new WPGraphQLMetrics({
 ```
 
 ### Instrumenting your resolvers
+
 ```javascript
 import { instrumentResolvers } from '@workpop/graphql-metrics';
 import { beersOnTap, pourBeer } from './resolvers';
@@ -55,8 +58,8 @@ function _logFunction(logLevel, ...args) {
   logger.log(logLevel, ...args);
 }
 
-const instrumentedResolvers = instrumentResolvers(
-  {
+const instrumentedResolvers = instrumentResolvers({
+  resolvers: {
     Query: {
       beersOnTap,
     },
@@ -64,21 +67,22 @@ const instrumentedResolvers = instrumentResolvers(
       pourBeer,
     },
   },
-  _logFunction,  // eslint-disable-line no-console
+  logFunc: _logFunction, // eslint-disable-line no-console
   logLevels,
-  Metrics,
-);
-
+  metrics: Metrics,
+});
 ```
 
 ## Output
 
 ### Log Output
-Each resolver invocation will produce 2 logs - one for start and one for completion.  A callId property is logged to allow correlation between the start and completion log for a single resolver invocation.  `elapsedTime` is measured in milliseconds.
+
+Each resolver invocation will produce 2 logs - one for start and one for completion. A callId property is logged to allow correlation between the start and completion log for a single resolver invocation. `elapsedTime` is measured in milliseconds.
 
 Here are some sample logs:
 
 Start log:
+
 ```
 2017-07-21T18:09:51+00:00 INFO [WPGRAPHQL]
 {
@@ -94,6 +98,7 @@ Start log:
 ```
 
 Completion log on success:
+
 ```
 2017-07-21T18:09:51+00:00 INFO [WPGRAPHQL]
 {
@@ -111,6 +116,7 @@ Completion log on success:
 ```
 
 Completion log on error:
+
 ```
 2017-07-21T18:09:51+00:00 INFO [WPGRAPHQL]
 {
@@ -129,6 +135,7 @@ Completion log on error:
 ```
 
 ### Data logged to InfluxDB
+
 Metrics for each resolver are aggregated on a one minute interval and flushed to InfluxDB once per minute.
 The following metrics are sent to InfluxDB for each resolver
 

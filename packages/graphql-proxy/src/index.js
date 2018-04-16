@@ -1,27 +1,22 @@
 import bodyParser from 'body-parser';
 import { makeExecutableSchema } from 'graphql-tools';
-import { parse } from 'graphql';
-import { get, pick, each } from 'lodash';
+import { pick, omit, get } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import Logger from '@workpop/simple-logger';
+import { instrumentResolvers } from '@workpop/graphql-metrics';
 import createServiceResolvers from './createServiceResolvers';
 
 const ProxyLogger = new Logger('GRAPHQLPROXY');
 
-function logSelectionSet(query) {
-  const parsedQuery = parse(query);
+const logLevels = {
+  INFO: 'info',
+  ERROR: 'error',
+  WARNING: 'warning',
+  TRACE: 'trace',
+};
 
-  each(get(parsedQuery, 'definitions'), (definition) => {
-    const selectionSet = get(definition, 'selectionSet');
-
-    const selections = get(selectionSet, 'selections');
-
-    each(selections, (selection) => {
-      const value = get(selection, 'name.value');
-
-      ProxyLogger.info('Resolver name from selection set:', value);
-    });
-  });
+function _logFunction(logLevel, ...args) {
+  ProxyLogger.log(logLevel, ...args);
 }
 
 export default async function registerServices({
@@ -38,9 +33,23 @@ export default async function registerServices({
     customHeaders,
   });
 
+  const instrumentedResolvers = instrumentResolvers({
+    resolvers,
+    _logFunction,
+    logLevels,
+    logOptions: {
+      filterContext: (context = {}) => {
+        return {
+          ...context,
+          headers: omit(get(context, 'headers'), 'cookie'),
+        };
+      },
+    },
+  });
+
   const schema = makeExecutableSchema({
     typeDefs: masterTypeDefs,
-    resolvers,
+    resolvers: instrumentedResolvers,
   });
 
   server.use(
@@ -58,9 +67,7 @@ export default async function registerServices({
       }
 
       const options = {
-        context: {
-          config: SERVICE_CONFIG,
-        },
+        context: {},
         formatError:
           errorFormatter ||
           function (e) {
@@ -74,21 +81,6 @@ export default async function registerServices({
       if (requestId) {
         logger.info('Request Id:', requestId);
         options.context.requestId = requestId;
-      }
-
-      const queryString = req.body.query;
-      const operationName = req.body.operationName;
-      const variables = req.body.variables;
-
-      if (!!queryString) {
-        logSelectionSet(queryString);
-      }
-
-      if (!!operationName) {
-        logger.info('GraphQL Operation Name:', operationName);
-      }
-      if (!!variables) {
-        logger.info('GraphQL Variables:', variables);
       }
 
       const userId = req.headers.userid || req.headers['wp-userid'];

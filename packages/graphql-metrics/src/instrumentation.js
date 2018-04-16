@@ -1,5 +1,5 @@
 //@flow
-import { get, isFinite, mapValues, reduce } from 'lodash';
+import { get, isFinite, isFunction, mapValues, reduce } from 'lodash';
 import { sanitizeArgs } from './sanitizeArgs';
 
 const crypto = require('crypto');
@@ -32,16 +32,28 @@ function _statusCodeForError(err: Error): number {
   return 500;
 }
 
-function _createInstrumentedResolver(
+type ImplementationType = {
   resolverName: string,
   resolverImpl: Function,
   logFunc: Function,
   logLevels: Object,
-  metrics: Object
-): Function {
+  metrics: Object,
+  logOptions: Object,
+};
+
+function _createInstrumentedResolver({
+  resolverName,
+  resolverImpl,
+  logFunc,
+  logLevels,
+  metrics,
+  logOptions = {},
+}: ImplementationType): Function {
   if (!!metrics) {
     metrics.addResolverMetric(resolverName);
   }
+
+  const filterContext = get(logOptions, 'filterContext');
 
   return (
     root: Object,
@@ -60,11 +72,18 @@ function _createInstrumentedResolver(
     }
 
     const sanitizedArgs = sanitizeArgs(resolverArgs);
+
+    let contextToLog = context;
+
+    if (filterContext && isFunction(filterContext)) {
+      contextToLog = filterContext(contextToLog);
+    }
+
     const baseLogEvent = {
       callId,
       resolverName,
       resolverArgs: sanitizedArgs,
-      context,
+      context: contextToLog,
     };
 
     logFunc(logLevels.INFO, baseLogEvent);
@@ -160,6 +179,14 @@ function _createInstrumentedResolver(
   };
 }
 
+type InstrumentType = {
+  resolvers: Object,
+  logFunc: Function,
+  logLevels: Object,
+  metrics: Object,
+  logOptions: Object,
+};
+
 /**
  * Instrument GraphQL resolvers object
  *
@@ -167,12 +194,13 @@ function _createInstrumentedResolver(
  * @param logFunc
  * @returns {*}
  */
-export default function instrumentResolvers(
-  resolvers: Object,
-  logFunc: Function,
-  logLevels: Object,
-  metrics: Object
-): Object {
+export default function instrumentResolvers({
+  resolvers,
+  logFunc,
+  logLevels,
+  metrics,
+  logOptions = {},
+}: InstrumentType): Object {
   if (!!metrics) {
     metrics.initMetrics();
     metrics.runMetricInterval();
@@ -189,13 +217,14 @@ export default function instrumentResolvers(
         resolverName: string
       ): Object => {
         return Object.assign({}, memo, {
-          [resolverName]: _createInstrumentedResolver(
+          [resolverName]: _createInstrumentedResolver({
             resolverName,
             resolverImpl,
             logFunc,
             logLevels,
-            metrics
-          ),
+            metrics,
+            logOptions,
+          }),
         });
       },
       {}
