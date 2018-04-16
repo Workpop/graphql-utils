@@ -18,9 +18,22 @@
     eslint-plugin-jsx-a11y "^2.2.3"
     eslint-plugin-react "^6.6.0"
 
+"@workpop/graphql-metrics@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.11.tgz#72ba5e2454c80a9e2eb8875cbc9a35502893684a"
+  dependencies:
+    "@workpop/simple-logger" "^1.1.0"
+
 "@workpop/simple-logger@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.0.0.tgz#9ffd9ec15288b0ed015ae33e3b95b6da255482a2"
+  dependencies:
+    lodash "^4.17.4"
+    moment "^2.18.1"
+
+"@workpop/simple-logger@^1.1.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.2.0.tgz#b677cb20fab82f13dcdd5e3c9fc7f63d1dc8ac10"
   dependencies:
     lodash "^4.17.4"
     moment "^2.18.1"
@@ -2154,6 +2167,10 @@ inflight@^1.0.4:
   dependencies:
     once "^1.3.0"
     wrappy "1"
+
+influx@^5.0.7:
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/influx/-/influx-5.0.7.tgz#35e65f6bf13cbaa1763108b5596a806a727a529a"
 
 inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"

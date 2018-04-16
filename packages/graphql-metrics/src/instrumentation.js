@@ -1,5 +1,5 @@
 //@flow
-import { get, isFinite, mapValues, reduce } from 'lodash';
+import { get, isFinite, isFunction, mapValues, reduce } from 'lodash';
 import { sanitizeArgs } from './sanitizeArgs';
 
 const crypto = require('crypto');
@@ -37,11 +37,14 @@ function _createInstrumentedResolver(
   resolverImpl: Function,
   logFunc: Function,
   logLevels: Object,
-  metrics: Object
+  metrics: Object,
+  logOptions: Object = {},
 ): Function {
   if (!!metrics) {
     metrics.addResolverMetric(resolverName);
   }
+
+  const filterContext = get(logOptions, 'filterContext');
 
   return (
     root: Object,
@@ -60,11 +63,18 @@ function _createInstrumentedResolver(
     }
 
     const sanitizedArgs = sanitizeArgs(resolverArgs);
+
+    let contextToLog = context;
+
+    if (filterContext && isFunction(filterContext)) {
+      contextToLog = filterContext(contextToLog);
+    }
+
     const baseLogEvent = {
       callId,
       resolverName,
       resolverArgs: sanitizedArgs,
-      context,
+      context: contextToLog,
     };
 
     logFunc(logLevels.INFO, baseLogEvent);
@@ -171,7 +181,8 @@ export default function instrumentResolvers(
   resolvers: Object,
   logFunc: Function,
   logLevels: Object,
-  metrics: Object
+  metrics: Object,
+  logOptions: Object = {},
 ): Object {
   if (!!metrics) {
     metrics.initMetrics();
@@ -194,7 +205,8 @@ export default function instrumentResolvers(
             resolverImpl,
             logFunc,
             logLevels,
-            metrics
+            metrics,
+            logOptions
           ),
         });
       },
