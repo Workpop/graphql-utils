@@ -16,7 +16,7 @@
   "author": "Workpop",
   "license": "MIT",
   "peerDependencies": {
-    "@workpop/graphql-metrics": "^0.3.10",
+    "@workpop/graphql-metrics": "^0.3.12",
     "@workpop/simple-logger": "^1.2.0",
     "lodash": "4.17.4"
   }
