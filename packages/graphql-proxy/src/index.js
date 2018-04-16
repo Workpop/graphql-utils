@@ -73,7 +73,8 @@ export default async function registerServices({
           function (e) {
             logger.error(e.message);
             return {
-              message: e.message,
+              message: get(e, 'message'),
+              validation: get(e, 'validation'),
             };
           },
       };
