@@ -19,7 +19,7 @@
     "@workpop/simple-logger": "^1.1.0"
   },
   "peerDependencies": {
-    "influx": "^5.0.7",
+    "influx": "5.0.7",
     "lodash": "4.17.4"
   },
   "devDependencies": {

@@ -30,11 +30,11 @@ export default function createResolvers({
   logger.info(
     'Instrumentation Config provided, creating instrumented and secure resovlers'
   );
-  
+
   return instrumentResolvers({
     resolvers: securedResolvers,
     logFunc: logFunction,
     logLevels,
-    metrics: Metrics
+    metrics: Metrics,
   });
 }

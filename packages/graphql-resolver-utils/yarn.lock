@@ -2,20 +2,13 @@
 # yarn lockfile v1
 
 
-"@workpop/graphql-metrics@^0.3.10":
-  version "0.3.10"
-  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.10.tgz#55fa65012d7c40c32ac30ea1f70e3988fe0e1e29"
+"@workpop/graphql-metrics@0.3.12":
+  version "0.3.12"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.12.tgz#acc8920ae87667322bb097ba2bf8158c56a95758"
   dependencies:
     "@workpop/simple-logger" "^1.1.0"
 
 "@workpop/simple-logger@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.1.0.tgz#712289773e6d75e445f2a4ec36dab906c9fcf10c"
-  dependencies:
-    lodash "^4.17.4"
-    moment "^2.18.1"
-
-"@workpop/simple-logger@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@workpop/simple-logger/-/simple-logger-1.2.0.tgz#b677cb20fab82f13dcdd5e3c9fc7f63d1dc8ac10"
   dependencies:
@@ -23,9 +16,9 @@
     moment "^2.18.1"
 
 lodash@^4.17.4:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 moment@^2.18.1:
-  version "2.19.3"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.19.3.tgz#bdb99d270d6d7fda78cc0fbace855e27fe7da69f"
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
