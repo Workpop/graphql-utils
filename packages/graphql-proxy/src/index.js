@@ -35,7 +35,7 @@ export default async function registerServices({
 
   const instrumentedResolvers = instrumentResolvers({
     resolvers,
-    _logFunction,
+    logFunc: _logFunction,
     logLevels,
     logOptions: {
       filterContext: (context = {}) => {
