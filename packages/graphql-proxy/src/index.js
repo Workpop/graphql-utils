@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import { makeExecutableSchema } from 'graphql-tools';
-import { pick, omit, get } from 'lodash';
+import { pick, omit, get, isNil } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
@@ -85,24 +85,28 @@ export default async function registerServices({
       }
 
       const userId = req.headers.userid || req.headers['wp-userid'];
+
       const cookie = req.headers.cookie;
       const forwardHeaders =
         headersToForward && pick(req.headers, ...headersToForward);
-
-      if (userId) {
-        logger.trace(`Recieving request from UserId ${userId}`);
-        options.context.userId = userId;
-      }
 
       // Attach headers to context that will be in downstream requests
       options.context.headers = {
         ...forwardHeaders,
         ...customHeaders,
-        userId,
-        requestId,
-        'wp-userid': userId,
         cookie,
       };
+
+      if (!isNil(requestId)) {
+        options.context.headers.requestId = requestId;
+      }
+
+      if (!isNil(userId)) {
+        logger.trace(`Recieving request from UserId ${userId}`);
+        options.context.userId = userId;
+        options.context.headers.userId = userId;
+        options.context.headers['wp-userid'] = userId;
+      }
 
       options.schema = schema;
 
