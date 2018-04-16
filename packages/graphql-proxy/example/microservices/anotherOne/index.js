@@ -70,7 +70,6 @@ function getHuman(id) {
 const resolvers = {
   Query: {
     anotherOneHero: (root, { region }, context) => {
-      console.log(context);
       return getHero(region);
     },
     anotherOneCharacter: (root, { id }) => {
@@ -103,9 +102,6 @@ server.use(
   bodyParser.json(),
   graphqlExpress(async (req) => {
     const headers = req.headers;
-
-    console.log(req.headers);
-
     const userId = get(headers, 'userid') || get(headers, 'wp-userid');
 
     const options = {
