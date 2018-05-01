@@ -1,6 +1,6 @@
 {
   "name": "@workpop/graphql-mock-directive",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "main": "lib/index.js",
   "scripts": {
     "prepublish": "BABEL_DISABLE_CACHE=1 babel ./src --ignore test --out-dir ./lib",
