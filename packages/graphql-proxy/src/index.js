@@ -1,9 +1,10 @@
 import bodyParser from 'body-parser';
 import { makeExecutableSchema } from 'graphql-tools';
-import { pick, omit, get, isNil } from 'lodash';
+import { pick, isArray, omit, get, isNil } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
+import { mockDirective, MockDefinition } from '@workpop/graphql-mock-directive';
 import createServiceResolvers from './createServiceResolvers';
 
 const ProxyLogger = new Logger('GRAPHQLPROXY');
@@ -47,7 +48,7 @@ export default async function registerServices({
     },
   });
 
-  const schema = makeExecutableSchema({
+  let schema = makeExecutableSchema({
     typeDefs: masterTypeDefs,
     resolvers: instrumentedResolvers,
   });
@@ -57,6 +58,20 @@ export default async function registerServices({
     bodyParser.json(),
     graphqlExpress(async (req) => {
       let logger;
+
+      const isMockRequest = req.headers['gql-mock'];
+
+      if (isMockRequest) {
+        schema = makeExecutableSchema({
+          typeDefs: isArray(masterTypeDefs)
+            ? [...masterTypeDefs, MockDefinition]
+            : [masterTypeDefs, MockDefinition],
+          resolvers: instrumentedResolvers,
+          schemaDirectives: {
+            mock: mockDirective,
+          },
+        });
+      }
 
       const requestId = req.headers['x-request-id'];
 

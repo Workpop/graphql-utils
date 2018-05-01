@@ -10,7 +10,7 @@ type Mutation {
 
 # This is a FooBar type. It is really cool. VERSION:2.8.3
 type Foo {
-  foo: String
+  foo: String @mock(type: fullName)
   bar: String
   baz: String
 }

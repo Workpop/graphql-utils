@@ -35,7 +35,7 @@ registerServices({
 
   # This is a FooBar type. It is really cool. Yo VERSION:2.8.1
   type Foo {
-    foo: String
+    foo: String @mock(type: fullName)
     bar: String
   }
 

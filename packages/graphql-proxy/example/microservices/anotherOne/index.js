@@ -48,6 +48,17 @@ function getCharacter(id) {
   return Promise.resolve(humanData[id]);
 }
 
+const humanData = {
+  1000: {
+    id: '2349230948023',
+    name: 'Suh'
+  },
+  1003: {
+    id: '2349230948023233223',
+    name: 'Dude',
+  }
+}
+
 /**
  * Allows us to fetch the undisputed hero of the anotherOne trilogy, R2-D2.
  */
@@ -69,6 +80,11 @@ function getHuman(id) {
 
 const resolvers = {
   Query: {
+    foo: () => {
+      return {
+        foo: 'bar',
+      };
+    },
     anotherOneHero: (root, { region }, context) => {
       return getHero(region);
     },
