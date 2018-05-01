@@ -1,0 +1,24 @@
+{
+  "name": "@workpop/graphql-mock-directive",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "BABEL_DISABLE_CACHE=1 babel ./src --ignore test --out-dir ./lib",
+    "lint:fix": "eslint . --fix",
+    "testonly": "mocha ./__tests__/*.test.js --compilers js:babel-register --require babel-polyfill",
+    "test:watch": "npm run testonly -- --watch --watch-extensions js"
+  },
+  "peerDependencies": {
+    "graphql": "0.13.2"
+  },
+  "devDependencies": {
+    "babel-plugin-inline-import": "^2.0.6",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1"
+  },
+  "dependencies": {
+    "faker": "^4.1.0",
+    "graphql-tools": "^3.0.0"
+  }
+}

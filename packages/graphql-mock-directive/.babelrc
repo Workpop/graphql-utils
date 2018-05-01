@@ -1,0 +1,4 @@
+{
+  "presets": ["env"],
+  "plugins": ["babel-plugin-inline-import", "transform-export-extensions"]
+}
