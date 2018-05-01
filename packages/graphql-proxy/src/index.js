@@ -1,6 +1,6 @@
 import bodyParser from 'body-parser';
 import { makeExecutableSchema } from 'graphql-tools';
-import { pick, omit, get, isNil } from 'lodash';
+import { pick, isArray, omit, get, isNil } from 'lodash';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
@@ -63,7 +63,9 @@ export default async function registerServices({
 
       if (isMockRequest) {
         schema = makeExecutableSchema({
-          typeDefs: [masterTypeDefs, MockDefinition],
+          typeDefs: isArray(masterTypeDefs)
+            ? [...masterTypeDefs, MockDefinition]
+            : [masterTypeDefs, MockDefinition],
           resolvers: instrumentedResolvers,
           schemaDirectives: {
             mock: mockDirective,
