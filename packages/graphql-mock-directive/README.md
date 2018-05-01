@@ -32,6 +32,6 @@ Under the hood [faker.js](https://github.com/marak/Faker.js/) is substituting th
 
 ## Adding new mocks
 
-1. Define your enum in `mock__Types` via `mockDefinition.graphql`
-2. Implement your type via `fakerDataBridge.js`
+1. Define your enum in `mockTypes` via `mockDefinition.graphql`
+2. Implement your type via `mockRegistry.js`
 3. Decorate your GraphQL type with the directive.
