@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.1.0...@workpop/graphql-proxy@2.2.0) (2018-06-18)
+
+
+### Features
+
+* **apollo:** apollo server upgrade ([13f9414](https://github.com/Workpop/graphql-utils/commit/13f9414))
+
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.0.4...@workpop/graphql-proxy@2.1.0) (2018-05-01)
 
