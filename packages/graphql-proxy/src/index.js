@@ -1,10 +1,7 @@
-import bodyParser from 'body-parser';
-import { makeExecutableSchema } from 'graphql-tools';
-import { pick, isArray, omit, get, isNil } from 'lodash';
-import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
+import { pick, omit, get, isNil } from 'lodash';
+import { ApolloServer, gql } from 'apollo-server';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
-import { mockDirective, MockDefinition } from '@workpop/graphql-mock-directive';
 import createServiceResolvers from './createServiceResolvers';
 
 const ProxyLogger = new Logger('GRAPHQLPROXY');
@@ -26,7 +23,6 @@ export default async function registerServices({
   masterTypeDefs,
   customHeaders = {},
   headersToForward,
-  enableGraphiQL = true,
   errorFormatter,
 }) {
   const resolvers = createServiceResolvers({
@@ -48,30 +44,19 @@ export default async function registerServices({
     },
   });
 
-  let schema = makeExecutableSchema({
-    typeDefs: masterTypeDefs,
+  const apolloServer = new ApolloServer({
+    typeDefs: gql(masterTypeDefs),
     resolvers: instrumentedResolvers,
-  });
-
-  server.use(
-    '/graphql',
-    bodyParser.json(),
-    graphqlExpress(async (req) => {
+    formatError:
+      errorFormatter ||
+      function (e) {
+        return {
+          message: get(e, 'message'),
+          validation: get(e, 'validation'),
+        };
+      },
+    context: ({ req }) => {
       let logger;
-
-      const isMockRequest = req.headers['gql-mock'];
-
-      if (isMockRequest) {
-        schema = makeExecutableSchema({
-          typeDefs: isArray(masterTypeDefs)
-            ? [...masterTypeDefs, MockDefinition]
-            : [masterTypeDefs, MockDefinition],
-          resolvers: instrumentedResolvers,
-          schemaDirectives: {
-            mock: mockDirective,
-          },
-        });
-      }
 
       const requestId = req.headers['x-request-id'];
 
@@ -81,22 +66,11 @@ export default async function registerServices({
         logger = new Logger('GRAPHQLPROXY');
       }
 
-      const options = {
-        context: {},
-        formatError:
-          errorFormatter ||
-          function (e) {
-            logger.error(e.message);
-            return {
-              message: get(e, 'message'),
-              validation: get(e, 'validation'),
-            };
-          },
-      };
+      const options = {};
 
       if (requestId) {
         logger.info('Request Id:', requestId);
-        options.context.requestId = requestId;
+        options.requestId = requestId;
       }
 
       const userId = req.headers.userid || req.headers['wp-userid'];
@@ -106,35 +80,26 @@ export default async function registerServices({
         headersToForward && pick(req.headers, ...headersToForward);
 
       // Attach headers to context that will be in downstream requests
-      options.context.headers = {
+      options.headers = {
         ...forwardHeaders,
         ...customHeaders,
         cookie,
       };
 
       if (!isNil(requestId)) {
-        options.context.headers.requestId = requestId;
+        options.headers.requestId = requestId;
       }
 
       if (!isNil(userId)) {
         logger.trace(`Recieving request from UserId ${userId}`);
-        options.context.userId = userId;
-        options.context.headers.userId = userId;
-        options.context.headers['wp-userid'] = userId;
+        options.userId = userId;
+        options.headers.userId = userId;
+        options.headers['wp-userid'] = userId;
       }
 
-      options.schema = schema;
-
       return options;
-    })
-  );
+    },
+  });
 
-  if (enableGraphiQL) {
-    server.use(
-      '/graphiql',
-      graphiqlExpress({
-        endpointURL: '/graphql',
-      })
-    );
-  }
+  apolloServer.applyMiddleware({ app: server });
 }
