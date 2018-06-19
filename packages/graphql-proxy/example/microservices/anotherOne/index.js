@@ -116,7 +116,7 @@ const server = express();
 server.use(
   '/graphql',
   bodyParser.json(),
-  graphqlExpress(async (req) => {
+  graphqlExpress(async (req, res) => {
     const headers = req.headers;
     const userId = get(headers, 'userid') || get(headers, 'wp-userid');
 
@@ -124,6 +124,7 @@ server.use(
       schema,
       context: {
         userId,
+        res,
       },
       formatError: (e) => {
         return {
