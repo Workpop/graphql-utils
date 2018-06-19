@@ -1,4 +1,4 @@
-import { pick, omit, get, isNil } from 'lodash';
+import { pick, omit, identity, get, isNil } from 'lodash';
 import { ApolloServer, gql } from 'apollo-server';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
@@ -21,6 +21,7 @@ export default async function registerServices({
   SERVICE_CONFIG,
   server,
   masterTypeDefs,
+  formatResponse = identity,
   customHeaders = {},
   headersToForward,
   errorFormatter,
@@ -55,9 +56,9 @@ export default async function registerServices({
           validation: get(e, 'validation'),
         };
       },
-    context: ({ req }) => {
+    formatResponse,
+    context: ({ req, res }) => {
       let logger;
-
       const requestId = req.headers['x-request-id'];
 
       if (requestId) {
@@ -66,7 +67,11 @@ export default async function registerServices({
         logger = new Logger('GRAPHQLPROXY');
       }
 
-      const options = {};
+      const options = {
+        setCookie: (name, value, opts) => {
+          res.cookie(name, value, opts);
+        },
+      };
 
       if (requestId) {
         logger.info('Request Id:', requestId);
