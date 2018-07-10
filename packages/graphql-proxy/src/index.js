@@ -39,7 +39,7 @@ export default async function registerServices({
       filterContext: (context = {}) => {
         return {
           ...context,
-          headers: omit(get(context, 'headers'), 'cookie'),
+          headers: omit(get(context, 'headers'), 'cookie', 'authorization', 'wp-scifi'),
         };
       },
     },
@@ -74,7 +74,7 @@ export default async function registerServices({
       };
 
       if (requestId) {
-        logger.info('Request Id:', requestId);
+        logger.trace('Request Id:', requestId);
         options.requestId = requestId;
       }
 

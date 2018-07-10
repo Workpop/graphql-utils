@@ -5,7 +5,7 @@
   "dependencies": {
     "@workpop/graphql-metrics": "^0.3.12",
     "@workpop/graphql-mock-directive": "^0.1.0",
-    "@workpop/simple-logger": "^1.0.0",
+    "@workpop/simple-logger": "^1.3.2",
     "apollo-link": "^1.2.1",
     "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.3",
