@@ -74,7 +74,7 @@ export default async function registerServices({
       };
 
       if (requestId) {
-        logger.info('Request Id:', requestId);
+        logger.trace('Request Id:', requestId);
         options.requestId = requestId;
       }
 
