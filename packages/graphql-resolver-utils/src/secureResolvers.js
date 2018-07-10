@@ -28,7 +28,7 @@ function _createSecuredResolver({
         throw e;
       }
     } else {
-      logger.warn(`${resolverName} is called unsecured`);
+      logger.trace(`${resolverName} is called unsecured`);
     }
     return resolverImpl.call(null, root, resolverArgs, context, info);
   };
