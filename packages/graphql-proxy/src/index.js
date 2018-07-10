@@ -39,7 +39,7 @@ export default async function registerServices({
       filterContext: (context = {}) => {
         return {
           ...context,
-          headers: omit(get(context, 'headers'), 'cookie'),
+          headers: omit(get(context, 'headers'), 'cookie', 'authorization'),
         };
       },
     },
