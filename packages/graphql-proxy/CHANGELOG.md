@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.2.2"></a>
+## [2.2.2](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.2.1...@workpop/graphql-proxy@2.2.2) (2018-07-10)
+
+
+### Bug Fixes
+
+* **logging:** do not log authorization http header ([0cf4596](https://github.com/Workpop/graphql-utils/commit/0cf4596))
+* **logging:** do not log wp-scifi http header ([12e749f](https://github.com/Workpop/graphql-utils/commit/12e749f))
+* **logging:** drop request id logging to trace level ([2af1ce2](https://github.com/Workpop/graphql-utils/commit/2af1ce2))
+
+
+
+
 <a name="2.2.1"></a>
 ## [2.2.1](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.2.0...@workpop/graphql-proxy@2.2.1) (2018-06-19)
 
