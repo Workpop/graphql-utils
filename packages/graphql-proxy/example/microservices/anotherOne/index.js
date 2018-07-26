@@ -80,6 +80,9 @@ function getHuman(id) {
 
 const resolvers = {
   Query: {
+    zero: () => {
+      return 0;
+    },
     foo: () => {
       return {
         foo: 'bar',

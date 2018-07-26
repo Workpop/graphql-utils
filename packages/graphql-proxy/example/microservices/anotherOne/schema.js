@@ -18,6 +18,7 @@ type Foo {
 # The query type, represents all of the entry points into our object graph
 type Query {
   foo: Foo
+  zero: Int!
   anotherOneHero(region: Region): Character
   anotherOneCharacter(id: ID!): Character
   anotherOneHuman(id: ID!): Human

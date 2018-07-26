@@ -1,5 +1,5 @@
 import { pick, omit, identity, get, isNil } from 'lodash';
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from 'apollo-server-express';
 import Logger from '@workpop/simple-logger';
 import { instrumentResolvers } from '@workpop/graphql-metrics';
 import createServiceResolvers from './createServiceResolvers';

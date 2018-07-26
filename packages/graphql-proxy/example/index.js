@@ -17,6 +17,7 @@ registerServices({
   # The query type, represents all of the entry points into our object graph
   type Query {
     foo: Foo
+    zero: Int!
     pokemonHero(region: Region): Character
     pokemonCharacter(id: ID!): Character
     pokemonHuman(id: ID!): Human
