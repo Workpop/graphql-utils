@@ -25,6 +25,7 @@ export default async function registerServices({
   customHeaders = {},
   headersToForward,
   errorFormatter,
+  logOptions,
 }) {
   const resolvers = createServiceResolvers({
     SERVICE_CONFIG,
@@ -42,6 +43,7 @@ export default async function registerServices({
           headers: omit(get(context, 'headers'), 'cookie', 'authorization', 'wp-scifi'),
         };
       },
+      ...logOptions,
     },
   });
 

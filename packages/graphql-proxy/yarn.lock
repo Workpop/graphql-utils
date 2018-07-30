@@ -155,9 +155,9 @@
     eslint-plugin-jsx-a11y "^2.2.3"
     eslint-plugin-react "^6.6.0"
 
-"@workpop/graphql-metrics@^0.3.12":
-  version "0.3.12"
-  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.3.12.tgz#acc8920ae87667322bb097ba2bf8158c56a95758"
+"@workpop/graphql-metrics@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@workpop/graphql-metrics/-/graphql-metrics-0.4.0.tgz#dfa0ec3c1d86bc45b6fcd6026e0b6e4779089842"
   dependencies:
     "@workpop/simple-logger" "^1.1.0"
 
