@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.4.0"></a>
+# [2.4.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.3.0...@workpop/graphql-proxy@2.4.0) (2018-07-30)
+
+
+### Features
+
+* **graphql-proxy:** support passing in log options ([2f462aa](https://github.com/Workpop/graphql-utils/commit/2f462aa))
+
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-proxy@2.2.2...@workpop/graphql-proxy@2.3.0) (2018-07-26)
 
