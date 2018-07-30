@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.12...@workpop/graphql-metrics@0.4.0) (2018-07-30)
+
+
+### Features
+
+* **graphql-metrics,graphql-resolver-utils:** support passing in list of redacted args ([b08c81b](https://github.com/Workpop/graphql-utils/commit/b08c81b))
+
+
+
+
 <a name="0.3.12"></a>
 ## [0.3.12](https://github.com/Workpop/graphql-utils/compare/@workpop/graphql-metrics@0.3.11...@workpop/graphql-metrics@0.3.12) (2018-04-16)
 
