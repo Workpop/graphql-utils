@@ -8,6 +8,7 @@ export default function createResolvers({
   resolvers,
   permissionChecks,
   instrumentationConfig = {},
+  logOptions,
 }) {
   const logger = new Logger(`createResolvers for ${svcName}`);
   const logFunction = get(instrumentationConfig, 'logFunction');
@@ -36,5 +37,6 @@ export default function createResolvers({
     logFunc: logFunction,
     logLevels,
     metrics: Metrics,
+    logOptions,
   });
 }
