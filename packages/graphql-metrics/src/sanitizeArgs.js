@@ -21,11 +21,11 @@ function mapValuesDeep(v: any, cb: Function, k: ?string): any {
   return cb(v, k);
 }
 
-export function sanitizeArgs(logObject: Object): any {
+export function sanitizeArgs(logObject: Object, redactedArgs: ?string[]): any {
   // prevent logging of certain arguments passed to the resolver
   // for example, passwords
   return mapValuesDeep(logObject, (v: any, k: string): any => {
-    if (includes(UNSAFE_ARGS, k)) {
+    if (includes(UNSAFE_ARGS, k) || includes(redactedArgs, k)) {
       return '<redacted>';
     }
     return v;

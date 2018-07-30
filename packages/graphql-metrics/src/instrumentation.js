@@ -54,6 +54,7 @@ function _createInstrumentedResolver({
   }
 
   const filterContext = get(logOptions, 'filterContext');
+  const redactedArgs = get(logOptions, 'redactedArgs');
 
   return (
     root: Object,
@@ -71,7 +72,7 @@ function _createInstrumentedResolver({
       callId = requestId;
     }
 
-    const sanitizedArgs = sanitizeArgs(resolverArgs);
+    const sanitizedArgs = sanitizeArgs(resolverArgs, redactedArgs);
 
     let contextToLog = context;
 
